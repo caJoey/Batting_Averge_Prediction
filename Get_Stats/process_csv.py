@@ -12,7 +12,7 @@ cols = [
     'RBI', 'SO', 'BA', 'OBP', 'SLG', 'OPS', 'OPS+', 'rOBA', 'Rbat+', 'HBP', 'SH', 'SF', 'IBB'
 ]
 # just for copypaste to csv
-header = 'player,id,Age,WAR,G,PA,AB,H,2B,3B,HR,RBI,SO,BA,OBP,SLG,OPS,OPS+,rOBA,Rbat+,HBP,SH,SF,IBB,year'
+header = 'player,key_bbref,Age,WAR,G,PA,AB,H,2B,3B,HR,RBI,SO,BA,OBP,SLG,OPS,OPS+,rOBA,Rbat+,HBP,SH,SF,IBB,year'
 
 csv_text = sys.stdin.read()
 # replace unknown chars with '�' - prevents issues
@@ -28,6 +28,7 @@ df = df.loc[idx_max_g]
 # 3: append year column
 df['year'] = year
 # Appends, no header, no left column
+df = df.rename(columns={'id': 'key_bbref'})
 df.to_csv('stats.csv', mode='a', header=False, index=False)
 
 # gets here if successful

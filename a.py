@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 df = pd.read_csv('Get_Stats/stats.csv')
-df = df.sort_values(by=['id', 'year']).reset_index(drop=True)
+df = df.sort_values(by=['key_bbref', 'year']).reset_index(drop=True)
 
 cols = [
     'Age', 'WAR', 'G', 'PA', 'AB', 'H', '2B', '3B', 'HR', 'RBI', 'SO',
@@ -13,12 +13,13 @@ cols = [
 ]
 # add previous year's result to every row
 for col in cols:
-    df[f'{col}_lag1'] = df.groupby('id')[col].shift(1)
+    df[f'{col}_lag1'] = df.groupby('key_bbref')[col].shift(1)
 # record previous year's stats
 lagged_features = [f'{col}_lag1' for col in cols]
 # remove players who only played 1 season
 df = df.dropna()
-cutoff_year = 2020
+print(len(df[df['year'] == 2025]))
+cutoff_year = 2025
 # set this year's stats as previous year's stats
 X = df[lagged_features]
 y = df['BA']
