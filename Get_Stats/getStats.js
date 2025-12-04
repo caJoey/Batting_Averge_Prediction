@@ -1,3 +1,9 @@
+/*
+Put together basic stats  from baseball-reference 
+ - Scrape raw csv from baseball-reference then send to process_csv.py for 
+preprocessing and appending to stats.csv
+*/
+
 import { chromium } from 'playwright';
 import { spawn } from "child_process";
 
