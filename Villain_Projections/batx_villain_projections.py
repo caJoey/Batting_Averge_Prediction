@@ -8,8 +8,9 @@ import pandas as pd
 import os
 
 STATS_PATH = '../Get_Stats/stats.csv'
-MAP_PATH = '../ID_Mapping/steamer_mapping.csv'
-GUESS_PATH = 'villain_guess.csv'
+MAP_PATH = '../ID_Mapping/mapping_fan.csv'
+# GUESS_PATH = 'villain_guess.csv'
+GUESS_PATH = 'villain_guess_batx.csv'
 if not os.path.exists(STATS_PATH):
     print('Error: Run \'node getStats.js\' in Get_Stats folder first!')
     exit()
@@ -27,14 +28,15 @@ season_counts = df_actual.groupby('key_bbref')['year'].count()
 non_rookies = season_counts[season_counts > 1].index
 df_actual = df_actual[df_actual['key_bbref'].isin(non_rookies)]
 # df_actual = df_actual[df_actual.groupby('key_bbref').transform('count') > 1]
-df_actual = df_actual[df_actual['year'] == 2025]
+df_actual = df_actual[df_actual['year'] == 2024]
 df_actual = df_actual[['BA', 'key_bbref']]
 df_map = pd.read_csv(MAP_PATH)
 actual_map = pd.merge(df_actual, df_map)
 map_guess = pd.merge(df_map, df_guess)
 actual_guess = pd.merge(actual_map, map_guess)
+print(actual_guess.head())
+print(f'len(actual_guess) {len(actual_guess)}')
 abs_error = (actual_guess['BA_guess'] - actual_guess['BA']).abs()
 print(f'abs_error: {abs_error.mean()}')
 # print('actual_guess')
 # print(actual_guess.head())
-print(f'len(actual_guess) {len(actual_guess)}')

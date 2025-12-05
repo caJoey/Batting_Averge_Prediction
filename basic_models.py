@@ -81,7 +81,7 @@ TRAIN_MAX = 2015
 X = df[features_to_keep]
 for col in X.columns:
     pass
-    print(col)
+    # print(col)
 y = df['BA']
 # split
 X_train = X[(TRAIN_MIN <= df['year']) & (df['year'] < TRAIN_MAX)]
