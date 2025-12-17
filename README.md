@@ -1,16 +1,22 @@
-# 570_Project
+# Batting Average Prediction
 
-# Project Deliverables:
+## Description
+A more detailed description is in Paper.pdf but this is a rough overview. The project uses the following data science / machine learning process to make MLB batting average predictions for players over the span of 1 season:
+1. Web scrapes (using Python's Requests and BeautifulSoup libraries, along with NodeJS Playwright library) to obtain standard / Statcast stats for MLB players, as well as competitors predictions.
+2. Uses Python's Pandas library to clean the data (e.g. not making predictions for rookies, filtering out players with low plate appearences).
+3. Uses a variety of preprocessing to prepare features for machine learning models (e.g. lagged features, cumulative career averages, computing advanced stats).
+4. Makes predictions using a variety of models and compares the mean absolute error (MAE) with The Bat X in 2024, along with Steamer in 2025.
+5. Finds that this process produces more accurate batting average predictions than The Bat X and Steamer for those years.
 
-## 1. Paper
+## Paper
 
-Paper is in Paper.pdf
+The paper provides a detailed description of the project in Paper.pdf
 
-## 2. Presentation
+## Presentation
 
 Presentation is in Final Presentation Slides.pdf, and video is linked [here](https://youtu.be/mGYSYoILyjo).
 
-# How to run the code
+## How to run the code
 
 The demo can be found [here](https://youtu.be/rNpo8EM49rs)
 
@@ -27,4 +33,4 @@ The demo can be found [here](https://youtu.be/rNpo8EM49rs)
 
 ## Other files
 
-Other folders and files can be ignored as these were used for web scraping, experimenting, or organiziing data.
+Other folders and files can be ignored as these were used for web scraping, experimenting, or organizing data.
